@@ -1,0 +1,9 @@
+name: biocrystal
+version: 0.1.0
+
+authors:
+  - Davide Paolo Tua <davide.paolo.tua@usi.ch>
+
+crystal: 0.36.1
+
+license: MIT
