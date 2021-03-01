@@ -1,6 +1,8 @@
 # biocrystal
 
-TODO: Write a description here
+A port of BioRuby into crystal
+
+[![Build Status](https://travis-ci.org/jinn999/biocrystal.svg?branch=master)](https://travis-ci.org/jinn999/biocrystal) 
 
 ## Installation
 
@@ -36,4 +38,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [Davide Paolo Tua](https://github.com/your-github-user) - creator and maintainer
+- [Davide Paolo Tua](https://github.com/jinn999) - creator and maintainer
