@@ -1,5 +1,7 @@
+require "./**"
+
 # TODO: Write documentation for `Biocrystal`
-module Biocrystal
+module Bio
   VERSION = "0.1.0"
 
   # TODO: Put your code here
