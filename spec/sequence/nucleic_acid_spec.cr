@@ -6,27 +6,12 @@
 require "../spec_helper"
 
 describe "A Nucleic Acid Sequence" do
-  it "is initialized with a string" do
-    str = "atgcatgcatgcatgcaaaa"
-    Bio::Sequence::NucleicAcid.new(str)
-  end
-
-  it "automatically strips any tab sequence when instantiating" do
-    str = "atgcatgcatgcatgcaaaa"
-    str_t = "atgcatgcat\tgca\ttgcaaaa"
-    Bio::Sequence::NucleicAcid.new(str_t).content.should eq (str)
-  end
-
-  it "automatically strips any newline when instantiating" do
-    str = "atgcatgcatgcatgcaaaa"
-    str_t = "atgcatgcat\ngca\ntgcaaaa"
-    Bio::Sequence::NucleicAcid.new(str_t).content.should eq (str)
-  end
-
-  it "automatically strips any line feed when instantiating" do
-    str = "atgcatgcatgcatgcaaaa"
-    str_t = "atgcatgcat\rgca\rtgcaaaa"
-    Bio::Sequence::NucleicAcid.new(str_t).content.should eq (str)
+  it "automatically strips space chars on instantiation" do
+    [" ", "\t", "\n", "\r"].each do |special_char|
+      expected_string = "atgcatgcatgcatgcaaaa"
+      str = "atgcatg#{special_char}catgcatg#{special_char}caaaa"
+      Bio::Sequence::NucleicAcid.new(str).content.should eq expected_string
+    end
   end
 
   it "provides the forward complement" do
@@ -102,7 +87,6 @@ describe "A Nucleic Acid Sequence" do
       na.to_rna.content.should eq("augcaugcaugcaugcaaaa")
     end
   end
-
 end
 #     def test_splicing
 #       #     'atgcatgcatgcatgcaaaa'
@@ -114,7 +98,6 @@ end
 #       str = 'atgcatgcatgcatgcaaaa'
 #       assert_equal(str, @obj.to_s)
 #     end
-
 
 #     def test_to_re
 #       assert_equal(/atgcatgcatgcatgcaaaa/, @obj.to_re)
@@ -130,7 +113,6 @@ end
 #       ary = ["Adenine", "Thymine", "Guanine"]
 #       assert_equal(ary , @obj.splice("1..3").names)
 #     end
-
 
 #   class TestSequenceNACommon < Test::Unit::TestCase
 

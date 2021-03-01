@@ -85,7 +85,7 @@ module Bio
         weight(phosphate_weight)
       end
 
-      #TODO: implement
+      # TODO: implement
       def to_re
         raise NotImplementedError
       end
