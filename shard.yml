@@ -2,8 +2,15 @@ name: biocrystal
 version: 0.1.0
 
 authors:
-  - Davide Paolo Tua <davide.paolo.tua@usi.ch>
+  - Davide Paolo Tua <davide.paolo.tua@gmail.com>
 
 crystal: 0.36.1
 
 license: MIT
+
+crystalline:
+  main: .crystalline_main.cr
+
+development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba
