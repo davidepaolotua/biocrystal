@@ -1,3 +1,5 @@
+require "../data/amino_acid"
+
 module Bio
   module Sequence
     class AminoAcid
@@ -10,7 +12,7 @@ module Bio
 
       def molecular_weight
         full_weight = @content.chars.reduce(0.0) do |acc, amino_acid|
-          acc += AMINOACID_WEIGHTS[amino_acid]
+          acc += AMINOACID_WEIGHTS[amino_acid.to_s]
           acc
         end
         full_weight - WEIGHTS["water"] * (@content.size - 1)
@@ -23,13 +25,13 @@ module Bio
 
       def codes
         @content.chars.map do |x|
-          Bio::AminoAcid.codes[x]
+          AMINOACID_CODES[x.to_s]
         end
       end
 
       def names
         codes.map do |x|
-          Bio::AminoAcid.names[x]
+          AMINOACID_NAMES[x]
         end
       end
     end

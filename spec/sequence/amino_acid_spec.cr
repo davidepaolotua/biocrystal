@@ -15,4 +15,19 @@ describe "An amino acid sequence" do
     end
   end
 
+  it "returns the correct codes" do
+    expected_codes = ["Arg", "Arg", "Leu", "Glu", "His", "Thr", "Phe", "Val",
+                      "Phe", "Leu", "Arg", "Asn", "Phe", "Ser", "Leu", "Met",
+                      "Leu", "Leu", "Arg", "Tyr"]
+    with_aminoacid { |aa| aa.codes.should eq(expected_codes) }
+  end
+
+  it "returns the correct names" do
+    expected_names = ["arginine", "arginine", "leucine", "glutamic acid",
+                      "histidine", "threonine", "phenylalanine", "valine",
+                      "phenylalanine", "leucine", "arginine", "asparagine",
+                      "phenylalanine", "serine", "leucine", "methionine",
+                      "leucine", "leucine", "arginine", "tyrosine"]
+    with_aminoacid { |aa| aa.names.should eq expected_names }
+  end
 end
