@@ -1,5 +1,6 @@
 require "../data/nucleotides"
 require "../data/misc"
+require "./codon_provider"
 
 module Bio
   module Sequence
@@ -28,7 +29,14 @@ module Bio
         end
       end
 
-      def to_aminoacid
+      def to_aminoacid(start_index : Int64 = 1) : AminoAcid
+        raise IndexError.new unless start_index <= 3 && start_index > 0
+        triplets = [] of String
+        window(3, 3, start_index - 1) do |chunk|
+          break if chunk.size < 3
+          triplets << CodonProvider[chunk]
+        end
+        AminoAcid.new(triplets.join(""))
       end
 
       def codon_usage
@@ -109,8 +117,8 @@ module Bio
         io << @content
       end
 
-      private def window(size : Int64, step : Int64 = 1)
-        number : Int64 = 0
+      private def window(size : Int64, step : Int64 = 1, starting_point : Int64 = 0, &block)
+        number : Int64 = starting_point
         number.step(by: step) do |start_index|
           yield content[start_index, size]
         end
