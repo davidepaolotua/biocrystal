@@ -89,6 +89,18 @@ describe "A Nucleic Acid Sequence" do
       na.to_rna.content.should eq("augcaugcaugcaugcaaaa")
     end
   end
+
+  it "can be created from a list of frequencies" do
+     values = { "a" => 1, "t"=> 1} of String => Int64
+     sequence = Bio::Sequence::NucleicAcid.randomize(values)
+     ["at", "ta"].should contain(sequence.content)
+  end
+
+  it "can provide a randomization of its content" do
+    sequence = Bio::Sequence::NucleicAcid.new("attt")
+    ["attt","tatt","ttat","ttta"].should contain sequence.randomize.content
+  end
+
 end
 #     def test_splicing
 #       #     'atgcatgcatgcatgcaaaa'
