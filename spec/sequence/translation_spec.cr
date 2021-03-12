@@ -31,4 +31,11 @@ describe "Translation to aminoacid" do
     end
     Bio::Sequence::CodonProvider.default_codon_table = old_codon_table
   end
+
+  it "correctly manages gaps and or unknown chars" do
+    ["N", "-"].each do |special_char|
+      s = Bio::Sequence::NucleicAcid.new("atgc#{special_char}#{special_char}tga")
+      s.to_aminoacid.content.should eq "MX*"
+    end
+  end
 end

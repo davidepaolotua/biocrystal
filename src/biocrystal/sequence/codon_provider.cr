@@ -7,23 +7,23 @@ module Bio
       @@codon_tables : Hash(Int32, CodonTable) = {} of Int32 => CodonTable
       @@default_codon_table : Int32 = 1
 
-      def default_codon_table
+      def default_codon_table : Int32
         @@default_codon_table
       end
 
-      def default_codon_table=(key : Int32)
+      def default_codon_table=(key : Int32) : Void
         @@default_codon_table = key
       end
 
-      def [](triplet)
-        @@codon_tables[@@default_codon_table][triplet]
+      def [](triplet : String) : String | Nil
+        self.[](@@default_codon_table, triplet)
       end
 
-      def [](codon_table, triplet)
-        @@codon_tables[codon_table, triplet]
+      def [](codon_table, triplet) : String | Nil
+        @@codon_tables[codon_table][triplet]
       end
 
-      def register(index, codon_table)
+      def register(index : Int32, codon_table : CodonTable) : Void
         raise IndexError.new("Codon table #{index} is already defined") if @@codon_tables[index]?
         @@codon_tables[index] = codon_table
       end

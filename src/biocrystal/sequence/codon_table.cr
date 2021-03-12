@@ -7,8 +7,8 @@ module Bio
       def initialize(@name, @content)
       end
 
-      def [](triplet)
-        @content[triplet]
+      def [](triplet) : String | Nil
+        @content[triplet]?
       end
     end
 

@@ -36,7 +36,8 @@ describe "A Nucleic Acid Sequence" do
 
   it "returns the correct gc percentage" do
     with_nucleic_sequence do |na|
-      na.gc_percent.should eq 40
+      expected_percentage = 40
+      na.gc_percent.should eq expected_percentage
     end
   end
 
@@ -54,7 +55,8 @@ describe "A Nucleic Acid Sequence" do
 
   it "returns the correct gc skew" do
     with_nucleic_sequence do |na|
-      na.gc_skew.should eq 0
+      expected_skew = 0.0
+      na.gc_skew.should eq expected_skew
     end
     other_sequence = Bio::Sequence::NucleicAcid.new("gtgcctgcctgcctgccccc")
     other_sequence.gc_skew.should eq -3.0/8

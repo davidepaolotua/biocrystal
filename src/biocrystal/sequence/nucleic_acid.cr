@@ -29,12 +29,12 @@ module Bio
         end
       end
 
-      def to_aminoacid(start_index : Int64 = 1) : AminoAcid
+      def to_aminoacid(start_index : Int64 = 1, unknown : String = "X") : AminoAcid
         raise IndexError.new unless start_index <= 3 && start_index > 0
         triplets = [] of String
         window(3, 3, start_index - 1) do |chunk|
           break if chunk.size < 3
-          triplets << CodonProvider[chunk]
+          triplets << (CodonProvider[chunk] || unknown)
         end
         AminoAcid.new(triplets.join(""))
       end
