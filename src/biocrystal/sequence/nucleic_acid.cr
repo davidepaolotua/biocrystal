@@ -121,8 +121,8 @@ module Bio
         self.class.new(@content.chars.shuffle!.join)
       end
 
-      def self.randomize(number_of_nucleotides : Hash(String,Int64))
-        new(number_of_nucleotides.join {|k,v| k * v}.chars.shuffle!.join)
+      def self.randomize(number_of_nucleotides : Hash(String, Int64))
+        new(number_of_nucleotides.join { |k, v| k * v }.chars.shuffle!.join)
       end
 
       private def window(size : Int64, step : Int64 = 1, starting_point : Int64 = 0, &block)
