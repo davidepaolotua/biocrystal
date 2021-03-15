@@ -1,0 +1,12 @@
+Style/VerboseBlock:
+  Description: Identifies usage of collapsible single expression blocks.
+  ExcludeCallsWithBlock: true
+  ExcludeMultipleLineBlocks: false
+  ExcludePrefixOperators: true
+  ExcludeOperators: false
+  ExcludeSetters: false
+  MaxLength: 50
+  Excluded:
+  - spec/sequence/amino_acid_spec.cr
+  Enabled: false 
+  Severity: Convention
